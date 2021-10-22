@@ -1,0 +1,31 @@
+﻿<Page x:Class="ICTSkillsApp.Pages.EvaluationCriteriaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ICTSkillsApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EvaluationCriteriaPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TBChampionShipName" Grid.Row="0" Margin="5"/>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Margin="5" Grid.Row="1" CanUserAddRows="False" x:Name="DGCriterion">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="auto" Header="Nr" Binding="{Binding Nr}"/>
+                <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Criterion}"/>
+                <DataGridTextColumn Width="auto" Header="Points" Binding="{Binding Points}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BBack" Click="BBack_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Back"/>
+        <WrapPanel Grid.Row="2">
+            <Button x:Name="BRemove" Width="100" Content="Remove" Click="BRemove_Click"/>
+            <Button x:Name="BAdd" Content="Add" Width="100" Click="BAdd_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>

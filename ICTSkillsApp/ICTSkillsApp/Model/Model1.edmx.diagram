@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a177a5ecc1664174b937c8669b3fc080" Name="Diagram1">
+        <EntityTypeShape EntityType="ICTSkillsDataBaseModel.Candidates" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="ICTSkillsDataBaseModel.Competitions" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="ICTSkillsDataBaseModel.Criteria" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="ICTSkillsDataBaseModel.Evaluation" Width="1.5" PointX="5.25" PointY="2.75" />
+        <EntityTypeShape EntityType="ICTSkillsDataBaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <AssociationConnector Association="ICTSkillsDataBaseModel.FK_Candidates_Competitions" />
+        <AssociationConnector Association="ICTSkillsDataBaseModel.FK_Evaluation_Candidates" />
+        <AssociationConnector Association="ICTSkillsDataBaseModel.FK_Criteria_Competitions" />
+        <AssociationConnector Association="ICTSkillsDataBaseModel.FK_Evaluation_Criteria" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
