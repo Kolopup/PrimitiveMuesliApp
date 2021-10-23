@@ -66,8 +66,9 @@ namespace PremiumJustMuesliApp.Pages
                     }
 
                     basicMuesli = selectedMuesli;
+                    basicMuesli.Grams = basicMuesli.PortionSize;
                     TBBasicMuesliName.Text = basicMuesli.NameEN;
-                    TBBasicMuesliSize.Text = basicMuesli.PortionSize.ToString();
+                    TBBasicMuesliSize.Text = basicMuesli.Grams.ToString();
                     selectedMueslis.Add(basicMuesli);
                     return;
                 }
@@ -92,7 +93,18 @@ namespace PremiumJustMuesliApp.Pages
             listViewSelectedMuesliPerfomances.ElementAt(stackCounter).Name = selectedMuesli.NameEN;
             LVSelectedMuesliMenu.ItemsSource = null;
             LVSelectedMuesliMenu.ItemsSource = listViewSelectedMuesliPerfomances;
+            selectedMuesli.Grams = selectedMuesli.PortionSize;
             selectedMueslis.Add(selectedMuesli);
+            basicMuesli.Grams -= selectedMuesli.PortionSize;
+            if(basicMuesli.Price / basicMuesli.Grams <= 0)
+            {
+                MessageBox.Show("Max Musli size is 600 grams");
+                stackCounter = 12;
+                return;
+            }
+            basicMuesli.PricePerGram = basicMuesli.Price / basicMuesli.Grams;
+            selectedMueslis[0] = basicMuesli;
+            TBBasicMuesliSize.Text = basicMuesli.Grams.ToString();
         }
         private void BDetails_Click(object sender, RoutedEventArgs e)
         {
@@ -111,6 +123,7 @@ namespace PremiumJustMuesliApp.Pages
                 MessageBox.Show("Put Muesli Mix Name");
                 return;
             }
+            double price = 0;
             Model.MuesliMix muesliMix = new Model.MuesliMix() { UserId = MainWindow.user.Id, Name = TBName.Text, CreatedDate = DateTime.Now};
             MainWindow.db.MuesliMix.Add(muesliMix);
             MainWindow.db.SaveChanges();
@@ -118,11 +131,13 @@ namespace PremiumJustMuesliApp.Pages
             muesliPerGramm += basicMuesli.Price / Convert.ToDouble(TBBasicMuesliSize.Text);
             foreach (var c in selectedMueslis)
             {
-                Model.MuesliMixMuesli muesliMixMuesli = new Model.MuesliMixMuesli() { MuesliId = c.Id, MuesliMixId = muesliMix.Id };
+                Model.MuesliMixMuesli muesliMixMuesli = new Model.MuesliMixMuesli() { MuesliId = c.Id, MuesliMixId = muesliMix.Id, Grams = Convert.ToInt32(c.Grams) };
                 MainWindow.db.MuesliMixMuesli.Add(muesliMixMuesli);
-                
+                price += Math.Round(c.Price / c.PortionSize * c.Grams, 2);
             }
+            muesliMix.Price = price;
             MainWindow.db.SaveChanges();
+            NavigationService.GoBack();
         }
     }
     class ListViewSelectedMuesliPerfomance
