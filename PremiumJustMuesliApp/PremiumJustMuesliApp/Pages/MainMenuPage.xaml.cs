@@ -74,7 +74,7 @@ namespace PremiumJustMuesliApp.Pages
         {
             if (firstChecked != false)
             {
-                Properties.Settings.Default.languageCode = "de-CH";
+                Properties.Settings.Default.languageCode = "ru-RU";
                 Properties.Settings.Default.Save();
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();

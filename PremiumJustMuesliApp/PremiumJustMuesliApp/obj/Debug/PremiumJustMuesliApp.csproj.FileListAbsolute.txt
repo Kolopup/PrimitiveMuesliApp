@@ -30,7 +30,8 @@ C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMues
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.csproj.CopyComplete
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.exe
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.pdb
-C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\bin\Debug\de\PremiumJustMuesliApp.resources.dll
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.Properties.Langs.Lang.resources
-C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.Properties.Langs.Lang.de.resources
-C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\de\PremiumJustMuesliApp.resources.dll
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\bin\Debug\ru\PremiumJustMuesliApp.resources.dll
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.csprojAssemblyReference.cache
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.Properties.Langs.Lang.ru.resources
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\ru\PremiumJustMuesliApp.resources.dll

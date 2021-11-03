@@ -173,10 +173,10 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Langs\Lang.de.Designer.cs">
+    <Compile Include="Properties\Langs\Lang.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Lang.de.resx</DependentUpon>
+      <DependentUpon>Lang.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Langs\Lang.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -193,9 +193,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Langs\Lang.de.resx">
+    <EmbeddedResource Include="Properties\Langs\Lang.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang.de.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lang.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Langs\Lang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

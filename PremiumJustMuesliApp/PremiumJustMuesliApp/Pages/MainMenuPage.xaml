@@ -18,7 +18,7 @@
 
             <WrapPanel>
                 <RadioButton Checked="RBEnglishLanguage_Checked" Margin="5" x:Name="RBEnglishLanguage">English</RadioButton>
-                <RadioButton Checked="RBRussianLanguage_Checked" Margin="5" x:Name="RBRussianLanguage">Deutch</RadioButton>
+                <RadioButton Checked="RBRussianLanguage_Checked" Margin="5" x:Name="RBRussianLanguage">Russia</RadioButton>
             </WrapPanel>
 
             <Button x:Name="BEditCustomerDetails" Click="BEditCustomerDetails_Click" Content="{x:Static language:Lang.editcustomerdetails}"/>

@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="editcustomerdetails" xml:space="preserve">
-    <value>Kundendaten bearbeiten</value>
+    <value>Редактировать покупателя</value>
   </data>
   <data name="exit" xml:space="preserve">
-    <value>Ausfahrt</value>
+    <value>Выход</value>
   </data>
   <data name="login" xml:space="preserve">
-    <value>Login</value>
+    <value>Логин</value>
   </data>
   <data name="mix" xml:space="preserve">
-    <value>Mischen</value>
+    <value>Микс</value>
   </data>
   <data name="mymueslimixes" xml:space="preserve">
-    <value>Meine Müslimischungen</value>
+    <value>Мои миксы мюслей</value>
   </data>
   <data name="order" xml:space="preserve">
-    <value>Bestellen</value>
+    <value>Заказы</value>
   </data>
   <data name="password" xml:space="preserve">
-    <value>Passwort</value>
+    <value>Пароль</value>
   </data>
   <data name="success" xml:space="preserve">
-    <value>Erfolg</value>
+    <value>Войти</value>
   </data>
 </root>
