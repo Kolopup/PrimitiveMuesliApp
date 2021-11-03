@@ -35,6 +35,36 @@ namespace PremiumJustMuesliApp.Pages
 
 
         }
+        public MuesliMixerPage(Model.MuesliMix muesliMix)
+        {
+            InitializeComponent();
+            foreach (var c in MainWindow.db.Type.ToList())
+            {
+                TCMuesliMenu.Items.Add(c);
+            }
+            for (int i = 0; i < 12; i++)
+            {
+                listViewSelectedMuesliPerfomances.Push(new ListViewSelectedMuesliPerfomance());
+            }
+            selectedMueslis = muesliMix.MuesliMixMuesli.Select(c => c.Muesli).ToList();
+            basicMuesli = selectedMueslis[0];
+
+            basicMuesli.Grams = selectedMueslis[0].PortionSize;
+            TBBasicMuesliName.Text = basicMuesli.NameEN;
+            TBBasicMuesliSize.Text = basicMuesli.Grams.ToString();
+            for (int i = 1; i < selectedMueslis.Count - 1; i++)
+            {
+                var selectedMuesli = selectedMueslis[i];
+                if (stackCounter == selectedMueslis.Count - 1)
+                {
+                    stackCounter = 0;
+                    basicMuesli = null;
+                    selectedMueslis = new List<Model.Muesli>();
+                }
+                EditRefresh(selectedMuesli);
+                stackCounter++;
+            }
+        }
         Stack<ListViewSelectedMuesliPerfomance> listViewSelectedMuesliPerfomances = new Stack<ListViewSelectedMuesliPerfomance>();
         List<Model.Muesli> selectedMueslis = new List<Model.Muesli>();
         Model.Muesli basicMuesli;
@@ -51,7 +81,6 @@ namespace PremiumJustMuesliApp.Pages
             }
             if (basicMuesli == null)
             {
-
                 if (stackCounter == 0)
                 {
                     if (selectedMueslis.Contains(selectedMuesli))
@@ -73,7 +102,7 @@ namespace PremiumJustMuesliApp.Pages
                     return;
                 }
             }
-            if(selectedMuesli.Type.Name == "Basics")
+            if (selectedMuesli.Type.Name == "Basics")
             {
                 MessageBox.Show("Select Extra Muesli");
                 return;
@@ -96,7 +125,26 @@ namespace PremiumJustMuesliApp.Pages
             selectedMuesli.Grams = selectedMuesli.PortionSize;
             selectedMueslis.Add(selectedMuesli);
             basicMuesli.Grams -= selectedMuesli.PortionSize;
-            if(basicMuesli.Price / basicMuesli.Grams <= 0)
+            if (basicMuesli.Price / basicMuesli.Grams <= 0)
+            {
+                MessageBox.Show("Max Musli size is 600 grams");
+                stackCounter = 12;
+                return;
+            }
+            basicMuesli.PricePerGram = basicMuesli.Price / basicMuesli.Grams;
+            selectedMueslis[0] = basicMuesli;
+            TBBasicMuesliSize.Text = basicMuesli.Grams.ToString();
+        }
+        private void EditRefresh(Model.Muesli selectedMuesli)
+        {
+            listViewSelectedMuesliPerfomances.ElementAt(stackCounter).PortionSize = selectedMuesli.PortionSize;
+            listViewSelectedMuesliPerfomances.ElementAt(stackCounter).muesli = selectedMuesli;
+            listViewSelectedMuesliPerfomances.ElementAt(stackCounter).Name = selectedMuesli.NameEN;
+            LVSelectedMuesliMenu.ItemsSource = null;
+            LVSelectedMuesliMenu.ItemsSource = listViewSelectedMuesliPerfomances;
+            selectedMuesli.Grams = selectedMuesli.PortionSize;
+            basicMuesli.Grams -= selectedMuesli.PortionSize;
+            if (basicMuesli.Price / basicMuesli.Grams <= 0)
             {
                 MessageBox.Show("Max Musli size is 600 grams");
                 stackCounter = 12;
@@ -108,7 +156,21 @@ namespace PremiumJustMuesliApp.Pages
         }
         private void BDetails_Click(object sender, RoutedEventArgs e)
         {
-
+            double Carbohydrates = 0, Proteins = 0, Fats = 0;
+            foreach (var c in selectedMueslis)
+            {
+                double portion = c.PortionSize;
+                double carbohydratesPerGramm = c.Carbohydrates / portion;
+                double proteinsPerGramm = c.Protein / portion;
+                double fatsPerGramm = c.Fat / portion;
+                Carbohydrates += carbohydratesPerGramm * c.Grams;
+                Proteins += proteinsPerGramm * c.Grams;
+                Fats += fatsPerGramm * c.Grams;
+            }
+            MessageBox.Show($"Carbohydrates: {Math.Round(Carbohydrates, 2)}\nProteins: {Math.Round(Proteins, 2)}\nFats: {Math.Round(Fats, 2)}");
+            Carbohydrates = 0;
+            Proteins = 0;
+            Fats = 0;
         }
 
         private void BBack_Click(object sender, RoutedEventArgs e)
@@ -118,13 +180,13 @@ namespace PremiumJustMuesliApp.Pages
 
         private void BSaveMuesli_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(TBName.Text))
+            if (string.IsNullOrWhiteSpace(TBName.Text))
             {
                 MessageBox.Show("Put Muesli Mix Name");
                 return;
             }
             double price = 0;
-            Model.MuesliMix muesliMix = new Model.MuesliMix() { UserId = MainWindow.user.Id, Name = TBName.Text, CreatedDate = DateTime.Now};
+            Model.MuesliMix muesliMix = new Model.MuesliMix() { UserId = MainWindow.user.Id, Name = TBName.Text, CreatedDate = DateTime.Now };
             MainWindow.db.MuesliMix.Add(muesliMix);
             MainWindow.db.SaveChanges();
             double muesliPerGramm = 0;

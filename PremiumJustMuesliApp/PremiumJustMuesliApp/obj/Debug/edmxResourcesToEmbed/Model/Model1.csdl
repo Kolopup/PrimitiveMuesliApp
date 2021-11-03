@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JustMuesliDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JustMuesliDataBaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Country" EntityType="JustMuesliDataBaseModel.Country" />
+    <EntitySet Name="Ingredient" EntityType="JustMuesliDataBaseModel.Ingredient" />
+    <EntitySet Name="Muesli" EntityType="JustMuesliDataBaseModel.Muesli" />
+    <EntitySet Name="MuesliIngredient" EntityType="JustMuesliDataBaseModel.MuesliIngredient" />
+    <EntitySet Name="MuesliMix" EntityType="JustMuesliDataBaseModel.MuesliMix" />
+    <EntitySet Name="MuesliMixMuesli" EntityType="JustMuesliDataBaseModel.MuesliMixMuesli" />
+    <EntitySet Name="Order" EntityType="JustMuesliDataBaseModel.Order" />
+    <EntitySet Name="OrderMuesliMixes" EntityType="JustMuesliDataBaseModel.OrderMuesliMixes" />
+    <EntitySet Name="sysdiagrams" EntityType="JustMuesliDataBaseModel.sysdiagrams" />
+    <EntitySet Name="Type" EntityType="JustMuesliDataBaseModel.Type" />
+    <EntitySet Name="User" EntityType="JustMuesliDataBaseModel.User" />
+    <AssociationSet Name="FK_User_Country" Association="JustMuesliDataBaseModel.FK_User_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuesliIngredient_Ingredient" Association="JustMuesliDataBaseModel.FK_MuesliIngredient_Ingredient">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="MuesliIngredient" EntitySet="MuesliIngredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Muesli_Type" Association="JustMuesliDataBaseModel.FK_Muesli_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Muesli" EntitySet="Muesli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuesliIngredient_Muesli" Association="JustMuesliDataBaseModel.FK_MuesliIngredient_Muesli">
+      <End Role="Muesli" EntitySet="Muesli" />
+      <End Role="MuesliIngredient" EntitySet="MuesliIngredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuesliMixMuesli_Muesli" Association="JustMuesliDataBaseModel.FK_MuesliMixMuesli_Muesli">
+      <End Role="Muesli" EntitySet="Muesli" />
+      <End Role="MuesliMixMuesli" EntitySet="MuesliMixMuesli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuesliMix_User" Association="JustMuesliDataBaseModel.FK_MuesliMix_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="MuesliMix" EntitySet="MuesliMix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuesliMixMuesli_MuesliMix" Association="JustMuesliDataBaseModel.FK_MuesliMixMuesli_MuesliMix">
+      <End Role="MuesliMix" EntitySet="MuesliMix" />
+      <End Role="MuesliMixMuesli" EntitySet="MuesliMixMuesli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMuesliMixes_MuesliMix" Association="JustMuesliDataBaseModel.FK_OrderMuesliMixes_MuesliMix">
+      <End Role="MuesliMix" EntitySet="MuesliMix" />
+      <End Role="OrderMuesliMixes" EntitySet="OrderMuesliMixes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="JustMuesliDataBaseModel.FK_Order_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMuesliMixes_Order" Association="JustMuesliDataBaseModel.FK_OrderMuesliMixes_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderMuesliMixes" EntitySet="OrderMuesliMixes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ISOCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="JustMuesliDataBaseModel.FK_User_Country" FromRole="Country" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MuesliIngredient" Relationship="JustMuesliDataBaseModel.FK_MuesliIngredient_Ingredient" FromRole="Ingredient" ToRole="MuesliIngredient" />
+  </EntityType>
+  <EntityType Name="Muesli">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NameDE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Protein" Type="Double" Nullable="false" />
+    <Property Name="Carbohydrates" Type="Double" Nullable="false" />
+    <Property Name="Fat" Type="Double" Nullable="false" />
+    <Property Name="PortionSize" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Type" Relationship="JustMuesliDataBaseModel.FK_Muesli_Type" FromRole="Muesli" ToRole="Type" />
+    <NavigationProperty Name="MuesliIngredient" Relationship="JustMuesliDataBaseModel.FK_MuesliIngredient_Muesli" FromRole="Muesli" ToRole="MuesliIngredient" />
+    <NavigationProperty Name="MuesliMixMuesli" Relationship="JustMuesliDataBaseModel.FK_MuesliMixMuesli_Muesli" FromRole="Muesli" ToRole="MuesliMixMuesli" />
+  </EntityType>
+  <EntityType Name="MuesliIngredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MuesliId" Type="Int32" Nullable="false" />
+    <Property Name="IngredientId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ingredient" Relationship="JustMuesliDataBaseModel.FK_MuesliIngredient_Ingredient" FromRole="MuesliIngredient" ToRole="Ingredient" />
+    <NavigationProperty Name="Muesli" Relationship="JustMuesliDataBaseModel.FK_MuesliIngredient_Muesli" FromRole="MuesliIngredient" ToRole="Muesli" />
+  </EntityType>
+  <EntityType Name="MuesliMix">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="JustMuesliDataBaseModel.FK_MuesliMix_User" FromRole="MuesliMix" ToRole="User" />
+    <NavigationProperty Name="MuesliMixMuesli" Relationship="JustMuesliDataBaseModel.FK_MuesliMixMuesli_MuesliMix" FromRole="MuesliMix" ToRole="MuesliMixMuesli" />
+    <NavigationProperty Name="OrderMuesliMixes" Relationship="JustMuesliDataBaseModel.FK_OrderMuesliMixes_MuesliMix" FromRole="MuesliMix" ToRole="OrderMuesliMixes" />
+  </EntityType>
+  <EntityType Name="MuesliMixMuesli">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MuesliMixId" Type="Int32" Nullable="false" />
+    <Property Name="MuesliId" Type="Int32" Nullable="false" />
+    <Property Name="Grams" Type="Int32" />
+    <NavigationProperty Name="Muesli" Relationship="JustMuesliDataBaseModel.FK_MuesliMixMuesli_Muesli" FromRole="MuesliMixMuesli" ToRole="Muesli" />
+    <NavigationProperty Name="MuesliMix" Relationship="JustMuesliDataBaseModel.FK_MuesliMixMuesli_MuesliMix" FromRole="MuesliMixMuesli" ToRole="MuesliMix" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Double" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="JustMuesliDataBaseModel.FK_Order_User" FromRole="Order" ToRole="User" />
+    <NavigationProperty Name="OrderMuesliMixes" Relationship="JustMuesliDataBaseModel.FK_OrderMuesliMixes_Order" FromRole="Order" ToRole="OrderMuesliMixes" />
+  </EntityType>
+  <EntityType Name="OrderMuesliMixes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="MuesliMixId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MuesliMix" Relationship="JustMuesliDataBaseModel.FK_OrderMuesliMixes_MuesliMix" FromRole="OrderMuesliMixes" ToRole="MuesliMix" />
+    <NavigationProperty Name="Order" Relationship="JustMuesliDataBaseModel.FK_OrderMuesliMixes_Order" FromRole="OrderMuesliMixes" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Muesli" Relationship="JustMuesliDataBaseModel.FK_Muesli_Type" FromRole="Type" ToRole="Muesli" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="JustMuesliDataBaseModel.FK_User_Country" FromRole="User" ToRole="Country" />
+    <NavigationProperty Name="MuesliMix" Relationship="JustMuesliDataBaseModel.FK_MuesliMix_User" FromRole="User" ToRole="MuesliMix" />
+    <NavigationProperty Name="Order" Relationship="JustMuesliDataBaseModel.FK_Order_User" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_User_Country">
+    <End Type="JustMuesliDataBaseModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuesliIngredient_Ingredient">
+    <End Type="JustMuesliDataBaseModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.MuesliIngredient" Role="MuesliIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MuesliIngredient">
+        <PropertyRef Name="IngredientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Muesli_Type">
+    <End Type="JustMuesliDataBaseModel.Type" Role="Type" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.Muesli" Role="Muesli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Muesli">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuesliIngredient_Muesli">
+    <End Type="JustMuesliDataBaseModel.Muesli" Role="Muesli" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.MuesliIngredient" Role="MuesliIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Muesli">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MuesliIngredient">
+        <PropertyRef Name="MuesliId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuesliMixMuesli_Muesli">
+    <End Type="JustMuesliDataBaseModel.Muesli" Role="Muesli" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.MuesliMixMuesli" Role="MuesliMixMuesli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Muesli">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MuesliMixMuesli">
+        <PropertyRef Name="MuesliId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuesliMix_User">
+    <End Type="JustMuesliDataBaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.MuesliMix" Role="MuesliMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MuesliMix">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuesliMixMuesli_MuesliMix">
+    <End Type="JustMuesliDataBaseModel.MuesliMix" Role="MuesliMix" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="JustMuesliDataBaseModel.MuesliMixMuesli" Role="MuesliMixMuesli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MuesliMix">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MuesliMixMuesli">
+        <PropertyRef Name="MuesliMixId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMuesliMixes_MuesliMix">
+    <End Type="JustMuesliDataBaseModel.MuesliMix" Role="MuesliMix" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="JustMuesliDataBaseModel.OrderMuesliMixes" Role="OrderMuesliMixes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MuesliMix">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderMuesliMixes">
+        <PropertyRef Name="MuesliMixId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Type="JustMuesliDataBaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMuesliMixes_Order">
+    <End Type="JustMuesliDataBaseModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="JustMuesliDataBaseModel.OrderMuesliMixes" Role="OrderMuesliMixes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderMuesliMixes">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

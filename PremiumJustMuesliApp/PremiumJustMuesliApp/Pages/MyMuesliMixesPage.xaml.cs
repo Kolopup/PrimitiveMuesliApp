@@ -40,7 +40,7 @@ namespace PremiumJustMuesliApp.Pages
         {
             if(ValidateSelectedItem())
             {
-
+                NavigationService.Navigate(new MuesliMixerPage((Model.MuesliMix)DGMyMuesliMixes.SelectedItem));
             }
         }
 
