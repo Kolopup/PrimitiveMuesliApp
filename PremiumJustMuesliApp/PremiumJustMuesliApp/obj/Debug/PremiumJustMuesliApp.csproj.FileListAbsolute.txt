@@ -5,7 +5,6 @@ C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMues
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\bin\Debug\EntityFramework.xml
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.csprojAssemblyReference.cache
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\MainWindow.g.cs
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\Pages\AuthorizationPage.g.cs
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\Pages\EditCustomerDetailsPage.g.cs
@@ -31,3 +30,7 @@ C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMues
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.csproj.CopyComplete
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.exe
 C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.pdb
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\bin\Debug\de\PremiumJustMuesliApp.resources.dll
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.Properties.Langs.Lang.resources
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\PremiumJustMuesliApp.Properties.Langs.Lang.de.resources
+C:\Users\Kolopup\Desktop\PrimitiveMuesliApp\PremiumJustMuesliApp\PremiumJustMuesliApp\obj\Debug\de\PremiumJustMuesliApp.resources.dll
